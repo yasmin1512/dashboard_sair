@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - CredMais</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header>
+
+        <!-- LOGO -->
+        <img
+            class="logo"
+            src="{{ url_for('logo') }}"
+            alt="Logo CredMais"
+        >
+
+
+        <!-- MENU -->
+        <nav>
+
+            <a href="#">Dashboard</a>
+
+            <a href="#">Perfil</a>
+
+            <a href="#">Simulação</a>
+
+            <a href="#">Empréstimos</a>
+
+            <a href="#">Movimentações</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
+
+    <main>
+
+
+        <!-- TÍTULO E DATA -->
+
+        <div class="inicio">
+
+            <div>
+
+                <h1>Bem-Vindo, {{Usuário}}!</h1>
+
+                <p>
+                    Acompanhe sua saúde financeira e seus empréstimos:
+                </p>
+
+            </div>
+
+
+            <div class="data">
+
+                <p>
+                    Hoje, 09 de outubro de 2026
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             CARDS PRINCIPAIS
+        ========================== -->
+
+        <div class="cards">
+
+
+            <!-- RENDA MENSAL -->
+
+            <div class="card">
+
+                <div class="icone">
+
+                    <img
+                        src="/dinheiro"
+                        alt="Ícone de dinheiro"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <h3>Renda Mensal Líquida</h3>
+
+                    <h2>R$6.000,00</h2>
+
+                    <p>Receita de R$ 11.621,00</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- COMPROMETIMENTO -->
+
+            <div class="card">
+
+                <div class="icone">
+
+                    <img
+                        src="/check"
+                        alt="Ícone de comprometimento"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <h3>Comprometimento Anual</h3>
+
+                    <h2>15,67%</h2>
+
+                    <p>Risco baixo</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PARCELAS -->
+
+            <div class="card">
+
+                <div class="icone">
+
+                    <img
+                        src="/quadrado"
+                        alt="Ícone de parcelas"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <h3>Parcelas Futuras</h3>
+
+                    <h2>R$ 2.824,35</h2>
+
+                    <p>Nos próximos 3 meses</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ÁREA DE AÇÕES
+        ========================== -->
+
+        <div class="acoes">
+
+
+            <!-- COLUNA ESQUERDA -->
+
+            <div class="coluna-esquerda">
+
+
+                <!-- SIMULAÇÃO -->
+
+                <div class="card-acao">
+
+                    <div class="icone">
+
+                        <img
+                            src="/calculadora"
+                            alt="Ícone de calculadora"
+                        >
+
+                    </div>
+
+
+                    <div class="conteudo-acao">
+
+                        <h2>Simule um novo crédito</h2>
+
+                        <p>
+                            Veja a parcela, o comprometimento da renda
+                            e o risco antes de contratar.
+                        </p>
+
+                        <button>
+                            Simular
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SITUAÇÃO FINANCEIRA -->
+
+                <div class="card-acao">
+
+                    <div class="icone">
+
+                        <img
+                            src="/escudo"
+                            alt="Ícone de escudo"
+                        >
+
+                    </div>
+
+
+                    <div class="conteudo-acao">
+
+                        <h2>Situação financeira</h2>
+
+                        <p>
+                            Visão geral da sua situação financeira pessoal
+                        </p>
+
+                        <button class="botao-verde">
+                            Navegar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COLUNA DIREITA -->
+
+            <div class="coluna-direita">
+
+
+                <!-- PRÓXIMA PARCELA -->
+
+                <div class="card-parcela">
+
+                    <div class="icone">
+
+                        <img
+                            src="/predio"
+                            alt="Ícone de próxima parcela"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>Próxima Parcela</h3>
+
+                        <h2>R$ 941,45</h2>
+
+                        <p>Novembro</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SAIR DA CONTA -->
+
+                <div
+                    class="card-sair"
+                    onclick="abrirModal()"
+                >
+
+                    <div>
+
+                        <div class="icone">
+
+                            <img
+                                src="/sair"
+                                alt="Ícone de sair"
+                            >
+
+                        </div>
+
+                        <p>Sair da Conta</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         POP-UP DE SAIR
+    ========================== -->
+
+    <div
+        class="fundo-modal"
+        id="modalSair"
+    >
+
+        <div class="modal">
+
+
+            <!-- ÍCONE DE SAIR -->
+
+            <div class="icone-sair">
+
+                <img
+                    src="/sair"
+                    alt="Ícone de sair"
+                >
+
+            </div>
+
+
+            <!-- MENSAGEM -->
+
+            <h2>
+                Deseja sair de sua conta?
+            </h2>
+
+            <p>
+                Suas informações serão mantidas.
+            </p>
+
+
+            <!-- BOTÕES -->
+
+            <div class="botoes-modal">
+
+
+                <!-- BOTÃO SAIR -->
+
+                <button
+                    class="botao-sair"
+                    onclick="sairDaConta()"
+                >
+                    Sair
+                </button>
+
+
+                <!-- BOTÃO CANCELAR -->
+
+                <button
+                    class="botao-cancelar"
+                    onclick="fecharModal()"
+                >
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Abre o pop-up
+        function abrirModal() {
+
+            document.getElementById("modalSair").style.display = "flex";
+
+        }
+
+
+        // Fecha o pop-up
+        function fecharModal() {
+
+            document.getElementById("modalSair").style.display = "none";
+
+        }
+
+
+        // Vai para a página de login
+        function sairDaConta() {
+
+            window.location.href = "/login";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
